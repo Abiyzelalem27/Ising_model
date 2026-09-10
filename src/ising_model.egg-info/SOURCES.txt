@@ -1,0 +1,9 @@
+pyproject.toml
+src/im/__init__.py
+src/im/operators.py
+src/im/states.py
+src/ising_model.egg-info/PKG-INFO
+src/ising_model.egg-info/SOURCES.txt
+src/ising_model.egg-info/dependency_links.txt
+src/ising_model.egg-info/requires.txt
+src/ising_model.egg-info/top_level.txt
