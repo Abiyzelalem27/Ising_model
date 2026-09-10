@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ising-model"
 version = "0.1.0"
-description = "Python tools for studying Ising models and Dicke states"
+description = "Python tools for studying Ising models"
 requires-python = ">=3.9"
 dependencies = [
     "numpy",
@@ -15,4 +15,4 @@ dependencies = [
 ]
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["src"] 
