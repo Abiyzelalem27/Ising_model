@@ -1,3 +1,5 @@
+LICENSE
+README.md
 pyproject.toml
 src/im/__init__.py
 src/im/operators.py

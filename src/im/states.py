@@ -29,3 +29,4 @@ def dicke_state(N, k):
     state = state / np.linalg.norm(state)
 
     return state
+

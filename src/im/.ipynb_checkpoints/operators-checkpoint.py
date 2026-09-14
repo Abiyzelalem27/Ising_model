@@ -17,9 +17,9 @@ I = np.eye(2, dtype=complex)
 
 def collective_spin(N, alpha):
     """
-    Construct the collective spin operator S_alpha.
+    Construct the collective spin operator S_alpha(Sa).
 
-    N     : number of spins
+    N: number of spins
     alpha : 'x', 'y', or 'z'
     """
     
@@ -68,7 +68,7 @@ def collective_spin_dicke(N):
     Sx = (S_plus + S_minus) / 2
     Sy = (S_plus - S_minus) / (2j)
 
-    return Sx, Sy, Sz, S_plus, S_minus
+    return Sx, Sy, Sz, S_plus, S_minus 
 
     
 
@@ -88,5 +88,50 @@ def commutator(A, B):
     """
 
     return A @ B - B @ A 
+
+def LMG_hamiltonian(N, J, Omega):
+    """
+    Construct the Lipkin-Meshkov-Glick (LMG) Hamiltonian
+    in the symmetric Dicke basis.
+
+    The Hamiltonian is
+
+        H = -(J/N) Sz^2 - Omega Sx
+
+    where the Dicke-state index k counts the number of spins
+    in state |1>.
+
+    Parameters
+    ----------
+    N :  Total number of spins.
+
+    J : Collective spin-spin interaction strength along the
+        z-direction.
+
+    Omega :  Strength of the transverse field acting along the
+        x-direction.
+
+    Returns
+    -------
+    H : LMG Hamiltonian with shape (N + 1, N + 1).
+
+    Sx :Collective spin operator in the x-direction.
+
+    Sy : Collective spin operator in the y-direction.
+
+    Sz : Collective spin operator in the z-direction.
+
+    Notes
+    -----
+    The Hamiltonian is constructed in the permutation-symmetric
+    Dicke subspace. Its dimension is N + 1 instead of 2**N.
+
+    For this normalization, the ground-state quantum phase
+    transition occurs at Omega/J = 1 in the large-N limit.
+    """
+
+    Sx, Sy, Sz, S_plus, S_minus = (collective_spin_dicke(N))
+    H = -(J / N) * (Sz @ Sz) - Omega * Sx 
+    return H, Sx, Sy, Sz, S_plus, S_minus 
 
     
